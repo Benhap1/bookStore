@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -25,12 +27,16 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-
-    @PostMapping
-    public ResponseEntity<OrderDTO> addOrder(@RequestBody @Valid OrderDTO orderDTO) {
-        OrderDTO createdOrder = orderService.addOrder(orderDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
-    }
+@PostMapping
+public ResponseEntity<OrderDTO> addOrder(@RequestBody @Valid OrderDTO orderDTO) {
+    OrderDTO createdOrder = orderService.addOrder(orderDTO);
+    URI location = ServletUriComponentsBuilder
+            .fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(createdOrder.getId())
+            .toUri();
+    return ResponseEntity.created(location).body(createdOrder);
+}
 
     @PatchMapping("/{orderId}/submit")
     public ResponseEntity<OrderDTO> submitOrder(@PathVariable Long orderId) {

@@ -6,7 +6,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -27,9 +29,15 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO> addBook(@RequestBody @Valid BookDTO bookDTO) {
-        return ResponseEntity.ok(bookService.addBook(bookDTO));
-    }
+public ResponseEntity<BookDTO> addBook(@RequestBody @Valid BookDTO bookDTO) {
+    BookDTO createdBook = bookService.addBook(bookDTO);
+    URI location = ServletUriComponentsBuilder
+            .fromCurrentRequest()
+            .path("/{id}")
+            .buildAndExpand(createdBook.getId())
+            .toUri();
+    return ResponseEntity.created(location).body(createdBook);
+}
 
     @PutMapping("/{id}")
     public ResponseEntity<BookDTO> updateBook(@PathVariable Long id,
