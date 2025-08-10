@@ -1,7 +1,8 @@
 package com.example.book.service.dto;
 
-import com.example.book.service.model.Book;
 import lombok.*;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -13,4 +14,5 @@ public class BookItemDTO {
     private String name;
     private String author;
     private Integer quantity;
+    private BigDecimal price;
 }

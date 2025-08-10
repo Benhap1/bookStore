@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${pageTitle}">Book Form</title>
+    <th:block th:replace="~{layouts/main-layout :: head}"></th:block>
+</head>
+<body>
+<div th:replace="~{layouts/main-layout :: navbar}"></div>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center mb-4" th:text="${pageTitle}">Book Form</h2>
+        <form th:action="@{/books/save}" th:object="${book}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" th:field="*{name}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" id="author" th:field="*{author}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre</label>
+                <input type="text" id="genre" th:field="*{genre}" class="form-control" required>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" id="price" th:field="*{price}" class="form-control" required step="0.01">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="publicationDate" class="form-label">Publication Date</label>
+                    <input type="date" id="publicationDate" th:field="*{publicationDate}" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="pages" class="form-label">Pages</label>
+                    <input type="number" id="pages" th:field="*{pages}" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="targetAgeGroup" class="form-label">Age Group</label>
+                    <select id="targetAgeGroup" th:field="*{targetAgeGroup}" class="form-select">
+                        <option th:each="group : ${ageGroups}" th:value="${group}" th:text="${group.name()}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="language" class="form-label">Language</label>
+                <select id="language" th:field="*{language}" class="form-select">
+                    <option th:each="lang : ${languages}" th:value="${lang}" th:text="${lang.name()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" th:field="*{description}" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="characteristics" class="form-label">Characteristics</label>
+                <textarea id="characteristics" th:field="*{characteristics}" class="form-control" rows="2"></textarea>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a th:href="@{/books/manage}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save Book</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:replace="~{layouts/main-layout :: footer}"></div>
+</body>
+</html>

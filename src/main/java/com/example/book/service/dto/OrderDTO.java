@@ -15,6 +15,7 @@ import java.util.List;
 public class OrderDTO {
     private Long id;
     private String clientEmail;
+    private BigDecimal clientBalance;
     private LocalDateTime orderDate;
     private BigDecimal price;
     private List<BookItemDTO> bookItems;

@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,37 +34,6 @@ public class ClientServiceImpl implements ClientService {
         return clientRepository.findAll().stream()
                 .map(clientMapper::toDTO)
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    @PreAuthorize("hasRole('ADMIN') or @clientSecurityService.isAccountOwner(authentication, #id)")
-    public ClientDTO getClientById(Long id) {
-        Client client = clientRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Client not found with email: " + id));
-        return clientMapper.toDTO(client);
-    }
-
-    @Override
-    @Transactional
-    @PreAuthorize("hasRole('ADMIN') or @clientSecurityService.isAccountOwner(authentication, #id)")
-    public ClientDTO updateClientById(Long id, ClientDTO clientDTO) {
-        Client client = clientRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Client not found with email: " + id));
-
-        clientMapper.updateClientFromDTO(clientDTO, client);
-        clientRepository.save(client);
-
-        return clientMapper.toDTO(client);
-    }
-
-    @Override
-    @Transactional
-    @PreAuthorize("hasRole('ADMIN')")
-    public void deleteClientById(Long id) {
-        Client client = clientRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Client not found with email: " + id));
-        clientRepository.delete(client);
     }
 
     @Override
@@ -101,5 +71,34 @@ public class ClientServiceImpl implements ClientService {
                 .orElseThrow(() -> new NotFoundException("Client not found with email: " + id));
         client.setEnabled(true);
         clientRepository.save(client);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ClientDTO getClientByEmail(String email) {
+        return clientRepository.findByEmail(email)
+                .map(clientMapper::toDTO)
+                .orElseThrow(() -> new NotFoundException("Client not found with email: " + email));
+    }
+
+    @Override
+    @Transactional
+    @PreAuthorize("hasRole('CLIENT') and #clientEmail == authentication.name")
+    public void topUpBalance(String clientEmail, BigDecimal amount) {
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Top-up amount must be positive.");
+        }
+        Client client = clientRepository.findByEmail(clientEmail)
+                .orElseThrow(() -> new NotFoundException("Client not found with email: " + clientEmail));
+        client.setBalance(client.getBalance().add(amount));
+        clientRepository.save(client);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ClientDTO> searchClientsByEmail(String email) {
+        return clientRepository.findByEmailContainingIgnoreCase(email).stream()
+                .map(clientMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

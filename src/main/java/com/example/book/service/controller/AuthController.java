@@ -1,35 +1,51 @@
 package com.example.book.service.controller;
 
-import com.example.book.service.dto.LoginRequest;
-import com.example.book.service.dto.LoginResponse;
-import com.example.book.service.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.book.service.dto.ClientCreateRequestDTO;
+import com.example.book.service.service.ClientService;
+import jakarta.validation.Valid;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@RestController
-@RequestMapping("/api/auth")
+
+@Controller
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
+    private final ClientService clientService;
 
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(), request.getPassword())
-        );
-        String username = authentication.getName();
-        String jwt = jwtService.generateToken(username);
-        return ResponseEntity.ok(new LoginResponse(jwt));
+    @GetMapping("/login")
+    public String loginPage() {
+        return "auth/login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage(Model model) {
+        model.addAttribute("client", new ClientCreateRequestDTO());
+        return "auth/register";
+    }
+
+    @PostMapping("/register")
+    public String registerNewClient(@Valid @ModelAttribute("client") ClientCreateRequestDTO clientDto,
+                                    BindingResult bindingResult,
+                                    RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return "auth/register";
+        }
+        try {
+            clientService.addClient(clientDto);
+            redirectAttributes.addFlashAttribute("successMessage", "Registration successful! Please log in.");
+            return "redirect:/auth/login";
+        } catch (Exception e) {
+            bindingResult.reject("", "An account with this email already exists.");
+            return "auth/register";
+        }
     }
 }
-

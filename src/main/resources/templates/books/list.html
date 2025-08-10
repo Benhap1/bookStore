@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Our Books</title>
+    <th:block th:replace="~{layouts/main-layout :: head}"></th:block>
+</head>
+<body>
+
+<div th:replace="~{layouts/main-layout :: navbar}"></div>
+
+<div class="container">
+    <h1 class="my-4">Explore Our Collection</h1>
+
+    <form th:action="@{/books/list}" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="Search by name, author, or genre..." th:value="${keyword}">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+            <a th:href="@{/books/list}" class="btn btn-outline-danger">Clear</a>
+        </div>
+    </form>
+    <div th:if="${books.isEmpty() and keyword != null}" class="alert alert-warning">
+        No books found matching your search criteria. Try another search.
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" th:each="book : ${books}">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title" th:text="${book.name}">Book Title</h4>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="${book.author}">Author</h6>
+                    <p class="card-text" th:text="${'Price: $' + #numbers.formatDecimal(book.price, 1, 'COMMA', 2, 'POINT')}">$19.99</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a th:href="@{/books/view/{id}(id=${book.id})}" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layouts/main-layout :: footer}"></div>
+</body>
+</html>

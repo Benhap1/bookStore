@@ -45,14 +45,20 @@ public class BookServiceImpl implements BookService {
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
     public BookDTO updateBookById(Long id, BookDTO bookDTO) {
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Book not found with name: " + id));
+        Book bookToUpdate = bookRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Book not found with id: " + id));
+        if (!bookToUpdate.getName().equals(bookDTO.getName())) {
+            bookRepository.findByName(bookDTO.getName()).ifPresent(b -> {
+                throw new AlreadyExistException("A book with the name '" + bookDTO.getName() + "' already exists.");
+            });
+        }
 
-        bookMapper.updateBookFromDTO(bookDTO, book);
-        Book saved = bookRepository.save(book);
-
+        bookMapper.updateBookFromDTO(bookDTO, bookToUpdate);
+        Book saved = bookRepository.save(bookToUpdate);
         return bookMapper.toDTO(saved);
     }
+
+
 
     @Override
     @Transactional
@@ -67,12 +73,20 @@ public class BookServiceImpl implements BookService {
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
     public BookDTO addBook(BookDTO bookDTO) {
-        bookRepository.findByName(bookDTO.getName()).ifPresent(book -> {
-            throw new AlreadyExistException("Book already exists with name: " + bookDTO.getName());
+        bookRepository.findByName(bookDTO.getName()).ifPresent(b -> {
+            throw new AlreadyExistException("A book with the name '" + bookDTO.getName() + "' already exists.");
         });
+
         Book book = bookMapper.toEntity(bookDTO);
         Book saved = bookRepository.save(book);
-
         return bookMapper.toDTO(saved);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<BookDTO> searchBooks(String keyword) {
+        return bookRepository.searchBooks(keyword).stream()
+                .map(bookMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

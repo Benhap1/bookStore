@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Clients</title>
+    <th:block th:replace="~{layouts/main-layout :: head}"></th:block>
+</head>
+<body>
+
+<div th:replace="~{layouts/main-layout :: navbar}"></div>
+
+<div class="container">
+    <h1 class="my-4">Client Management</h1>
+
+    <form th:action="@{/clients/list}" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="email" class="form-control" placeholder="Search by client email..." th:value="${email}">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+            <a th:href="@{/clients/list}" class="btn btn-outline-danger">Clear</a>
+        </div>
+    </form>
+
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${clients.isEmpty()}">
+                    <td colspan="5" class="text-center text-muted">No clients found.</td>
+                </tr>
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.id}">1</td>
+                    <td th:text="${client.firstName + ' ' + client.lastName}">Name</td>
+                    <td th:text="${client.email}">email@example.com</td>
+                    <td>
+                        <span class="badge"
+                              th:classappend="${client.enabled ? 'bg-success' : 'bg-danger'}"
+                              th:text="${client.enabled ? 'Active' : 'Blocked'}">Status</span>
+                    </td>
+                    <td>
+                        <form th:action="@{/clients/{id}/block(id=${client.id})}" method="post" class="d-inline" th:if="${client.enabled}">
+                            <button type="submit" class="btn btn-warning btn-sm">Block</button>
+                        </form>
+                        <form th:action="@{/clients/{id}/unblock(id=${client.id})}" method="post" class="d-inline" th:if="${!client.enabled}">
+                            <button type="submit" class="btn btn-success btn-sm">Unblock</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layouts/main-layout :: footer}"></div>
+</body>
+</html>

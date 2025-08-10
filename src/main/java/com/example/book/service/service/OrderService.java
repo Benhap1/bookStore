@@ -7,11 +7,15 @@ import java.util.List;
 public interface OrderService {
     List<OrderDTO> getOrdersByClient(String clientEmail);
 
-    OrderDTO addOrder(OrderDTO order);
-
     OrderDTO submitOrder(Long orderId);
 
     OrderDTO confirmOrder(Long orderId);
 
     OrderDTO cancelOrder(Long orderId);
+
+    List<OrderDTO> getAllOrders();
+
+    void addBookToDraftOrder(Long bookId, String clientEmail);
+
+    List<OrderDTO> searchOrdersByClientEmail(String email);
 }

@@ -1,7 +1,6 @@
 package com.example.book.service.service;
 
 import com.example.book.service.dto.BookDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -18,4 +17,6 @@ public interface BookService {
 
 
     BookDTO addBook(BookDTO book);
+
+    List<BookDTO> searchBooks(String keyword);
 }
