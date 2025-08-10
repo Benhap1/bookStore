@@ -5,7 +5,9 @@ import com.example.book.service.dto.OrderDTO;
 import java.util.List;
 
 public interface OrderService {
-    List<OrderDTO> getOrdersByClient(String clientEmail);
+
+    List<OrderDTO> getDraftOrdersByClient(String clientEmail);
+    List<OrderDTO> getCompletedOrdersByClient(String clientEmail);
 
     OrderDTO submitOrder(Long orderId);
 

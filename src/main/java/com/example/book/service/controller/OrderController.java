@@ -27,31 +27,35 @@ public class OrderController {
 
     private final OrderService orderService;
 
+//    @GetMapping("/my")
+//    @PreAuthorize("hasRole('CLIENT')")
+//    public String getCurrentClientOrders(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+//        if (userDetails != null) {
+//            List<OrderDTO> allOrders = orderService.getOrdersByClient(userDetails.getUsername());
+//            List<OrderDTO> draftOrders = allOrders.stream()
+//                    .filter(o -> o.getStatus() == OrderStatus.DRAFT)
+//                    .collect(Collectors.toList());
+//
+//            List<OrderDTO> completedOrders = allOrders.stream()
+//                    .filter(o -> o.getStatus() != OrderStatus.DRAFT)
+//                    .collect(Collectors.toList());
+//            model.addAttribute("draftOrders", draftOrders);
+//            model.addAttribute("completedOrders", completedOrders);
+//        }
+//        return "orders/list";
+//    }
+
     @GetMapping("/my")
     @PreAuthorize("hasRole('CLIENT')")
     public String getCurrentClientOrders(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         if (userDetails != null) {
-            List<OrderDTO> allOrders = orderService.getOrdersByClient(userDetails.getUsername());
-            List<OrderDTO> draftOrders = allOrders.stream()
-                    .filter(o -> o.getStatus() == OrderStatus.DRAFT)
-                    .collect(Collectors.toList());
-
-            List<OrderDTO> completedOrders = allOrders.stream()
-                    .filter(o -> o.getStatus() != OrderStatus.DRAFT)
-                    .collect(Collectors.toList());
-            model.addAttribute("draftOrders", draftOrders);
-            model.addAttribute("completedOrders", completedOrders);
+            String email = userDetails.getUsername();
+            model.addAttribute("draftOrders", orderService.getDraftOrdersByClient(email));
+            model.addAttribute("completedOrders", orderService.getCompletedOrdersByClient(email));
         }
         return "orders/list";
     }
 
-
-//    @GetMapping("/all")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public String getAllOrders(Model model) {
-//        model.addAttribute("orders", orderService.getAllOrders());
-//        return "orders/admin-list";
-//    }
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
@@ -75,17 +79,28 @@ public class OrderController {
         return "redirect:/orders/all";
     }
 
+//    @PostMapping("/{orderId}/cancel")
+//    @PreAuthorize("hasRole('ADMIN') or @orderSecurityService.isOrderOwner(authentication, #orderId)")
+//    public String cancelOrder(@PathVariable Long orderId, RedirectAttributes redirectAttributes) {
+//        orderService.cancelOrder(orderId);
+//        redirectAttributes.addFlashAttribute("successMessage", "Order #" + orderId + " has been cancelled.");
+//        if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
+//                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+//            return "redirect:/orders/all";
+//        }
+//        return "redirect:/orders/my";
+//    }
+
     @PostMapping("/{orderId}/cancel")
     @PreAuthorize("hasRole('ADMIN') or @orderSecurityService.isOrderOwner(authentication, #orderId)")
-    public String cancelOrder(@PathVariable Long orderId, RedirectAttributes redirectAttributes) {
+    public String cancelOrder(@PathVariable Long orderId,
+                              @RequestParam(defaultValue = "/orders/my") String returnUrl,
+                              RedirectAttributes redirectAttributes) {
         orderService.cancelOrder(orderId);
         redirectAttributes.addFlashAttribute("successMessage", "Order #" + orderId + " has been cancelled.");
-        if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
-                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
-            return "redirect:/orders/all";
-        }
-        return "redirect:/orders/my";
+        return "redirect:" + returnUrl;
     }
+
 
     @PostMapping("/cart/add/{bookId}")
     @PreAuthorize("hasRole('CLIENT')")

@@ -1,6 +1,5 @@
 package com.example.book.service.service.impl;
 
-import com.example.book.service.dto.BookItemDTO;
 import com.example.book.service.dto.OrderDTO;
 import com.example.book.service.exception.CustomBadRequestException;
 import com.example.book.service.exception.InsufficientFundsException;
@@ -8,7 +7,6 @@ import com.example.book.service.exception.NotFoundException;
 import com.example.book.service.mapper.OrderMapper;
 import com.example.book.service.model.*;
 import com.example.book.service.model.enums.OrderStatus;
-import com.example.book.service.repo.BookItemRepository;
 import com.example.book.service.repo.BookRepository;
 import com.example.book.service.repo.ClientRepository;
 import com.example.book.service.repo.OrderRepository;
@@ -18,10 +16,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,18 +30,22 @@ public class OrderServiceImpl implements OrderService {
     private final ClientRepository clientRepository;
     private final BookRepository bookRepository;
     private final OrderMapper orderMapper;
-    private final BookItemRepository bookItemRepository;
 
 
     @Override
     @Transactional(readOnly = true)
     @PreAuthorize("hasRole('CLIENT')")
-    public List<OrderDTO> getOrdersByClient(String clientEmail) {
-        Client client = clientRepository.findByEmail(clientEmail)
-                .orElseThrow(() -> new NotFoundException("Client not found with email: " + clientEmail));
+    public List<OrderDTO> getDraftOrdersByClient(String clientEmail) {
+        return orderRepository.findAllByClientEmailAndStatus(clientEmail, OrderStatus.DRAFT).stream()
+                .map(orderMapper::toDTO)
+                .collect(Collectors.toList());
+    }
 
-        return orderRepository.findAllByClient(client)
-                .stream()
+    @Override
+    @Transactional(readOnly = true)
+    @PreAuthorize("hasRole('CLIENT')")
+    public List<OrderDTO> getCompletedOrdersByClient(String clientEmail) {
+        return orderRepository.findAllByClientEmailAndStatusNot(clientEmail, OrderStatus.DRAFT).stream()
                 .map(orderMapper::toDTO)
                 .collect(Collectors.toList());
     }

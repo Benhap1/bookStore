@@ -11,7 +11,6 @@
     <h1 class="my-4">My Shopping Cart & Order History</h1>
 
     <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
-
     <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
 
     <div th:if="${!draftOrders.isEmpty()}">
@@ -53,7 +52,6 @@
     <div th:if="${draftOrders.isEmpty()}">
         <p class="text-muted">Your shopping cart is empty.</p>
     </div>
-
 
     <hr class="my-5">
 

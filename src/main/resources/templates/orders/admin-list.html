@@ -20,6 +20,7 @@
     </form>
 
     <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
 
     <div class="card">
         <div class="card-body">
@@ -37,25 +38,21 @@
                 </thead>
                 <tbody>
                 <tr th:if="${orders.isEmpty()}">
-                    <td colspan="7" class="text-center">No orders found.</td>
+                    <td colspan="7" class="text-center text-muted">No orders found.</td>
                 </tr>
                 <tr th:each="order : ${orders}">
                     <td th:text="${order.id}">1</td>
                     <td th:text="${order.clientEmail}">client@example.com</td>
-
                     <td th:classappend="${order.clientBalance.compareTo(order.price) >= 0 ? 'text-success' : 'text-danger'}"
                         class="fw-bold">
                         <span th:text="${'$' + #numbers.formatDecimal(order.clientBalance, 1, 'COMMA', 2, 'POINT')}"></span>
                     </td>
-
                     <td th:text="${'$' + #numbers.formatDecimal(order.price, 1, 'COMMA', 2, 'POINT')}">$99.99</td>
                     <td th:text="${#temporals.format(order.orderDate, 'dd-MM-yyyy HH:mm')}">Date</td>
                     <td>
-                            <span class="badge"
-                                  th:classappend="${order.status.name() == 'CONFIRMED' ? 'bg-success' : (order.status.name() == 'CANCELLED' ? 'bg-danger' : (order.status.name() == 'SUBMITTED' ? 'bg-primary' : 'bg-warning'))}"
-                                  th:text="${order.status.name()}">
-                                STATUS
-                            </span>
+                        <span class="badge"
+                              th:classappend="${order.status.name() == 'CONFIRMED' ? 'bg-success' : (order.status.name() == 'CANCELLED' ? 'bg-danger' : (order.status.name() == 'SUBMITTED' ? 'bg-primary' : 'bg-warning'))}"
+                              th:text="${order.status.name()}">STATUS</span>
                     </td>
                     <td>
                         <form th:action="@{/orders/{id}/confirm(id=${order.id})}" method="post" class="d-inline"
@@ -64,6 +61,7 @@
                         </form>
                         <form th:action="@{/orders/{id}/cancel(id=${order.id})}" method="post" class="d-inline"
                               th:if="${order.status.name() == 'SUBMITTED' or order.status.name() == 'CONFIRMED'}">
+                            <input type="hidden" name="returnUrl" value="/orders/all">
                             <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
                         </form>
                     </td>

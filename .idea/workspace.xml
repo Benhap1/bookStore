@@ -4,84 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c9dcd96-9d4a-4beb-9196-7ae952f531bd" name="Changes" comment="fix:  addBook and addOrder controllers fixed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/CustomAuthenticationFailureHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/exception/InsufficientFundsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/repo/BookItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_initial_tables.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V2__Add_books.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/auth/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/books/admin-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/books/form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/books/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/books/view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/clients/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/clients/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layouts/main-layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/orders/admin-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/orders/list.html" afterDir="false" />
+    <list default="true" id="5c9dcd96-9d4a-4beb-9196-7ae952f531bd" name="Changes" comment="fix:  ui fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/BookItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/BookItemDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/ClientCreateRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/ClientCreateRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/LoginRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/LoginResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/OrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/dto/OrderDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/mapper/OrderMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/repo/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/repo/BookRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/repo/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/repo/ClientRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/repo/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/repo/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/security/jwt/JwtAuthFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/security/jwt/JwtService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/AppUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/AppUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/ClientServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/orders/admin-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/orders/admin-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/orders/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/orders/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/BookController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/ClientController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/BookItemDTO$BookItemDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/BookItemDTO$BookItemDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/BookItemDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/BookItemDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/ClientCreateRequestDTO$ClientCreateRequestDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/ClientCreateRequestDTO$ClientCreateRequestDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/ClientCreateRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/ClientCreateRequestDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/LoginRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/LoginResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/OrderDTO$OrderDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/OrderDTO$OrderDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/OrderDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/dto/OrderDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/mapper/ClientMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/mapper/ClientMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/mapper/OrderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/mapper/OrderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/mapper/OrderMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/mapper/OrderMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/repo/BookRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/repo/BookRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/repo/ClientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/repo/ClientRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/repo/OrderRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/repo/OrderRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/security/jwt/JwtAuthFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/security/jwt/JwtService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/BookService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/ClientService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/BookServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/ClientServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/ClientServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/OrderServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/BookItemMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/BookItemMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/BookMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/BookMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/ClientMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/ClientMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/OrderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/example/book/service/mapper/OrderMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/books/admin-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/books/admin-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/books/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/books/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/orders/admin-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/orders/admin-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/orders/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/orders/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +99,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -282,7 +226,8 @@
       <workItem from="1754734384338" duration="15466000" />
       <workItem from="1754835256493" duration="1778000" />
       <workItem from="1754837060498" duration="310000" />
-      <workItem from="1754837387340" duration="4428000" />
+      <workItem from="1754837387340" duration="5901000" />
+      <workItem from="1754843345636" duration="1353000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -356,7 +301,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748636763502</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix:  ui fixed">
+      <option name="closed" value="true" />
+      <created>1754841863424</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1754841863424</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix:  ui fixed">
+      <option name="closed" value="true" />
+      <created>1754841877018</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1754841877018</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,6 +332,7 @@
     <MESSAGE value="6 commit - advicer added" />
     <MESSAGE value="fix: correction of service methods" />
     <MESSAGE value="feat: security added" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: security added" />
+    <MESSAGE value="fix:  ui fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix:  ui fixed" />
   </component>
 </project>

@@ -1,3 +1,86 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--<head>-->
+<!--    <title>My Orders</title>-->
+<!--    <th:block th:replace="~{layouts/main-layout :: head}"></th:block>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:replace="~{layouts/main-layout :: navbar}"></div>-->
+
+<!--<div class="container">-->
+<!--    <h1 class="my-4">My Shopping Cart & Order History</h1>-->
+
+<!--    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>-->
+
+<!--    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>-->
+
+<!--    <div th:if="${!draftOrders.isEmpty()}">-->
+<!--        <div th:each="order : ${draftOrders}" class="card mb-4">-->
+<!--            <div class="card-header bg-primary text-white">-->
+<!--                <h3>Your Current Cart (Order ID: <span th:text="${order.id}"></span>)</h3>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <table class="table table-hover">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>Book</th>-->
+<!--                        <th>Author</th>-->
+<!--                        <th>Quantity</th>-->
+<!--                        <th>Price per item</th>-->
+<!--                        <th>Total</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr th:each="item : ${order.bookItems}">-->
+<!--                        <td th:text="${item.name}">Book Name</td>-->
+<!--                        <td th:text="${item.author}">Author Name</td>-->
+<!--                        <td th:text="${item.quantity}">1</td>-->
+<!--                        <td th:text="${'$' + item.price}">$19.99</td>-->
+<!--                        <td th:text="${'$' + (item.price * item.quantity)}">$19.99</td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--            <div class="card-footer text-end">-->
+<!--                <h4>Grand Total: <span th:text="${'$' + order.price}">$0.00</span></h4>-->
+<!--                <form th:action="@{/orders/cart/submit}" method="post" class="mt-2">-->
+<!--                    <input type="hidden" name="orderId" th:value="${order.id}" />-->
+<!--                    <button type="submit" class="btn btn-success btn-lg">Submit Order</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div th:if="${draftOrders.isEmpty()}">-->
+<!--        <p class="text-muted">Your shopping cart is empty.</p>-->
+<!--    </div>-->
+
+
+<!--    <hr class="my-5">-->
+
+<!--    <h2>Order History</h2>-->
+<!--    <div th:if="${completedOrders.isEmpty()}">-->
+<!--        <p class="alert alert-info">You have no previous orders.</p>-->
+<!--    </div>-->
+<!--    <div th:if="${!completedOrders.isEmpty()}">-->
+<!--        <div th:each="order : ${completedOrders}" class="card mb-3">-->
+<!--            <div class="card-header d-flex justify-content-between">-->
+<!--                <span>Order #<b th:text="${order.id}">1</b> - <span th:text="${#temporals.format(order.orderDate, 'dd-MM-yyyy HH:mm')}">Date</span></span>-->
+<!--                <span class="badge" th:classappend="${order.status.name() == 'SUBMITTED' ? 'bg-warning' : (order.status.name() == 'CONFIRMED' ? 'bg-success' : 'bg-danger')}" th:text="${order.status.name()}">STATUS</span>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Total: <span th:text="${'$' + order.price}">$99.99</span></h5>-->
+<!--                <ul>-->
+<!--                    <li th:each="item : ${order.bookItems}" th:text="${item.name + ' (Qty: ' + item.quantity + ')'}">Book Title (Qty: 1)</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div th:replace="~{layouts/main-layout :: footer}"></div>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
@@ -11,7 +94,6 @@
     <h1 class="my-4">My Shopping Cart & Order History</h1>
 
     <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
-
     <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
 
     <div th:if="${!draftOrders.isEmpty()}">
@@ -53,7 +135,6 @@
     <div th:if="${draftOrders.isEmpty()}">
         <p class="text-muted">Your shopping cart is empty.</p>
     </div>
-
 
     <hr class="my-5">
 

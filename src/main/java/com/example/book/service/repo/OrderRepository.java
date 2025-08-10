@@ -13,9 +13,16 @@ import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    List<Order> findAllByClient(Client client);
+
     Optional<Order> findByClientIdAndStatus(Long clientId, OrderStatus status);
 
     @Query("SELECT o FROM Order o JOIN o.client c WHERE LOWER(c.email) LIKE LOWER(CONCAT('%', :email, '%'))")
     List<Order> findOrdersByClientEmail(@Param("email") String email);
+
+    @Query("SELECT o FROM Order o WHERE o.client.email = :clientEmail AND o.status = :status")
+    List<Order> findAllByClientEmailAndStatus(@Param("clientEmail") String clientEmail, @Param("status") OrderStatus status);
+
+
+    @Query("SELECT o FROM Order o WHERE o.client.email = :clientEmail AND o.status <> :status")
+    List<Order> findAllByClientEmailAndStatusNot(@Param("clientEmail") String clientEmail, @Param("status") OrderStatus status);
 }

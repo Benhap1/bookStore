@@ -31,12 +31,6 @@ public class ClientController {
         model.addAttribute("client", clientService.getClientByEmail(userDetails.getUsername()));
         return "clients/profile";
     }
-//    @GetMapping("/list")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public String listAllClients(Model model) {
-//        model.addAttribute("clients", clientService.getAllClients());
-//        return "clients/list";
-//    }
 
     @GetMapping("/list")
     @PreAuthorize("hasRole('ADMIN')")
