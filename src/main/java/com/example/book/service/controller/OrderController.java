@@ -2,12 +2,10 @@ package com.example.book.service.controller;
 
 import com.example.book.service.dto.OrderDTO;
 import com.example.book.service.exception.InsufficientFundsException;
-import com.example.book.service.model.enums.OrderStatus;
 import com.example.book.service.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -16,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 
@@ -27,23 +25,6 @@ public class OrderController {
 
     private final OrderService orderService;
 
-//    @GetMapping("/my")
-//    @PreAuthorize("hasRole('CLIENT')")
-//    public String getCurrentClientOrders(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-//        if (userDetails != null) {
-//            List<OrderDTO> allOrders = orderService.getOrdersByClient(userDetails.getUsername());
-//            List<OrderDTO> draftOrders = allOrders.stream()
-//                    .filter(o -> o.getStatus() == OrderStatus.DRAFT)
-//                    .collect(Collectors.toList());
-//
-//            List<OrderDTO> completedOrders = allOrders.stream()
-//                    .filter(o -> o.getStatus() != OrderStatus.DRAFT)
-//                    .collect(Collectors.toList());
-//            model.addAttribute("draftOrders", draftOrders);
-//            model.addAttribute("completedOrders", completedOrders);
-//        }
-//        return "orders/list";
-//    }
 
     @GetMapping("/my")
     @PreAuthorize("hasRole('CLIENT')")
@@ -79,17 +60,6 @@ public class OrderController {
         return "redirect:/orders/all";
     }
 
-//    @PostMapping("/{orderId}/cancel")
-//    @PreAuthorize("hasRole('ADMIN') or @orderSecurityService.isOrderOwner(authentication, #orderId)")
-//    public String cancelOrder(@PathVariable Long orderId, RedirectAttributes redirectAttributes) {
-//        orderService.cancelOrder(orderId);
-//        redirectAttributes.addFlashAttribute("successMessage", "Order #" + orderId + " has been cancelled.");
-//        if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
-//                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
-//            return "redirect:/orders/all";
-//        }
-//        return "redirect:/orders/my";
-//    }
 
     @PostMapping("/{orderId}/cancel")
     @PreAuthorize("hasRole('ADMIN') or @orderSecurityService.isOrderOwner(authentication, #orderId)")

@@ -1,6 +1,5 @@
 package com.example.book.service.repo;
 
-import com.example.book.service.model.Client;
 import com.example.book.service.model.Order;
 import com.example.book.service.model.enums.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
