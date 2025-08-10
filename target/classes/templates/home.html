@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to the Book Store</title>
+    <th:block th:replace="~{layouts/main-layout :: head}"></th:block>
+</head>
+<body>
+
+<div th:replace="~{layouts/main-layout :: navbar}"></div>
+
+<div class="container text-center">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Welcome to Our Book Store!</h1>
+            <p class="fs-4">Find your next favorite book from our vast collection.</p>
+            <a th:href="@{/books/list}" class="btn btn-primary btn-lg" type="button">Browse Books</a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layouts/main-layout :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title th:text="${book.name}">Book Details</title>
+    <th:block th:replace="~{layouts/main-layout :: head}"></th:block>
+</head>
+<body>
+<div th:replace="~{layouts/main-layout :: navbar}"></div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h2 class="mb-0" th:text="${book.name}">Book Name</h2>
+            <form th:action="@{/orders/cart/add/{bookId}(bookId=${book.id})}" method="post" sec:authorize="hasRole('CLIENT')" class="ms-3 mb-0">
+                <button type="submit" class="btn btn-primary btn-sm">Add to Basket</button>
+            </form>
+        </div>
+
+        <div class="card-body">
+            <p><strong>Author:</strong> <span th:text="${book.author}">Author Name</span></p>
+            <p><strong>Genre:</strong> <span th:text="${book.genre}">Genre</span></p>
+            <p><strong>Price:</strong> <span th:text="${'$' + #numbers.formatDecimal(book.price, 1, 'COMMA', 2, 'POINT')}">$19.99</span></p>
+            <p><strong>Published:</strong> <span th:text="${#temporals.format(book.publicationDate, 'dd-MM-yyyy')}">01-01-2022</span></p>
+            <p><strong>Language:</strong> <span th:text="${book.language}">English</span></p>
+            <p><strong>Pages:</strong> <span th:text="${book.pages}">300</span></p>
+            <hr>
+            <h5>Description</h5>
+            <p th:text="${book.description}">Book description goes here.</p>
+        </div>
+
+        <div class="card-footer">
+            <a th:href="@{/books/list}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layouts/main-layout :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>My Profile</title>
+    <th:block th:replace="~{layouts/main-layout :: head}"></th:block>
+</head>
+<body>
+
+<div th:replace="~{layouts/main-layout :: navbar}"></div>
+
+<div class="container">
+    <h1 class="my-4">My Profile</h1>
+
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 th:text="${client.firstName + ' ' + client.lastName}">Client Name</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Email:</strong> <span th:text="${client.email}">email@example.com</span></p>
+                    <p><strong>Account Status:</strong>
+                        <span th:text="${client.enabled ? 'Active' : 'Blocked'}"
+                              class="badge"
+                              th:classappend="${client.enabled ? 'bg-success' : 'bg-danger'}">
+                            Status
+                        </span>
+                    </p>
+                    <hr>
+                    <p class="h3"><strong>Current Balance:</strong>
+                        <span class="text-success" th:text="${'$' + #numbers.formatDecimal(client.balance, 1, 'COMMA', 2, 'POINT')}">$0.00</span>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a th:href="@{/books/list}" class="btn btn-primary">Browse Books</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4>Top Up Your Balance</h4>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/clients/profile/topup}" method="post">
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Amount ($)</label>
+                            <input type="number" id="amount" name="amount" class="form-control"
+                                   placeholder="e.g., 50.00" required
+                                   step="0.01" min="0.01">
+                            <div class="form-text">Enter the amount you wish to add to your balance.</div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Add Funds</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layouts/main-layout :: footer}"></div>
+</body>
+</html>
