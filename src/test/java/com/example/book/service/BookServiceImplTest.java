@@ -23,8 +23,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 /**
- * Unit-тесты для BookServiceImpl.
- * Мы используем Mockito для изоляции сервиса от репозитория и маппера.
+ * Unit-tests for BookServiceImpl.
  */
 @ExtendWith(MockitoExtension.class)
 class BookServiceImplTest {
@@ -39,7 +38,7 @@ class BookServiceImplTest {
     private BookServiceImpl bookService;
 
     @Test
-    @DisplayName("getBookById: должен вернуть BookDTO, когда книга существует")
+    @DisplayName("getBookById: should return BookDTO when the book exists")
     void whenGetBookById_whenBookExists_thenReturnBookDTO() {
 
         long bookId = 1L;
@@ -47,7 +46,6 @@ class BookServiceImplTest {
         BookDTO bookDTO = BookDTO.builder().id(bookId).name("The Hobbit").build();
 
         when(bookRepository.findById(bookId)).thenReturn(Optional.of(book));
-
         when(bookMapper.toDTO(book)).thenReturn(bookDTO);
 
         BookDTO foundBook = bookService.getBookById(bookId);
@@ -61,7 +59,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    @DisplayName("getBookById: должен выбросить NotFoundException, когда книга не существует")
+    @DisplayName("getBookById: should throw NotFoundException when the book does not exist")
     void whenGetBookById_whenBookDoesNotExist_thenThrowNotFoundException() {
 
         long bookId = 99L;
@@ -75,7 +73,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    @DisplayName("addBook: должен успешно сохранить новую книгу")
+    @DisplayName("addBook: should successfully save a new book")
     void whenAddBook_withUniqueName_thenSaveAndReturnDTO() {
 
         BookDTO bookToSaveDTO = BookDTO.builder().name("New Unique Book").build();
@@ -96,7 +94,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    @DisplayName("addBook: должен выбросить AlreadyExistException, если имя уже занято")
+    @DisplayName("addBook: should throw AlreadyExistException if the name is already taken")
     void whenAddBook_withExistingName_thenThrowAlreadyExistException() {
 
         BookDTO bookToSaveDTO = BookDTO.builder().name("Existing Book").build();
@@ -112,7 +110,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    @DisplayName("updateBookById: должен успешно обновить книгу")
+    @DisplayName("updateBookById: should successfully update a book")
     void whenUpdateBook_whenExists_thenUpdateAndReturnDTO() {
 
         long bookId = 1L;
@@ -135,7 +133,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    @DisplayName("deleteBookById: должен вызвать метод delete, если книга существует")
+    @DisplayName("deleteBookById: should call delete method if the book exists")
     void whenDeleteBook_whenExists_thenCallDelete() {
         long bookId = 1L;
         Book book = Book.builder().id(bookId).build();
@@ -146,9 +144,8 @@ class BookServiceImplTest {
         verify(bookRepository, times(1)).delete(book);
     }
 
-
     @ParameterizedTest
-    @DisplayName("searchBooks: должен вызывать правильный метод репозитория")
+    @DisplayName("searchBooks: should call the correct repository method")
     @ValueSource(strings = {"Hobbit", "1984", "Dune"})
     void whenSearchBooks_withKeyword_thenCallRepositorySearch(String keyword) {
 
