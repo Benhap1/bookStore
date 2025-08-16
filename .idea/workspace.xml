@@ -4,12 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c9dcd96-9d4a-4beb-9196-7ae952f531bd" name="Changes" comment="feat:  book tests added">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/book/service/ClientServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/book/service/OrderServiceImplTest.java" afterDir="false" />
+    <list default="true" id="5c9dcd96-9d4a-4beb-9196-7ae952f531bd" name="Changes" comment="feat: tests for service added">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/book/service/ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/CustomAuthenticationFailureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/CustomAuthenticationFailureHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/DataInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/conf/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/BookItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/BookItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/AppUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/AppUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/ClientSecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/ClientSecurityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/OrderSecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/OrderSecurityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/BookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/ClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/book/service/service/impl/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/book/service/BookServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/book/service/BookServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/book/service/ClientServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/book/service/ClientServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/book/service/OrderServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/book/service/OrderServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/CustomAuthenticationFailureHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/CustomAuthenticationFailureHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/DataInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/DataInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/conf/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/BookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/BookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/ClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/ClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/controller/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Admin$AdminBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Admin$AdminBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Admin$AdminBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Admin$AdminBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Book$BookBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Book$BookBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/BookItem$BookItemBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/BookItem$BookItemBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/BookItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/BookItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Client$ClientBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Client$ClientBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Client$ClientBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Client$ClientBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Order$OrderBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Order$OrderBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/AppUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/AppUserDetailsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/ClientSecurityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/ClientSecurityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/OrderSecurityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/OrderSecurityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/BookServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/ClientServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/ClientServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/book/service/service/impl/OrderServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,42 +115,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultPlantUmlFileTemplate": "UML Object",
-    "JUnit.All in book.service.executor": "Run",
-    "JUnit.BookServiceImplTest.executor": "Run",
-    "JUnit.ClientServiceImplTest.executor": "Run",
-    "JUnit.OrderServiceImplTest.executor": "Run",
-    "Maven.book.service [clean,compile].executor": "Run",
-    "Maven.book.service [clean].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.Application.executor": "Run",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/user/Downloads/bookstore-service/spring-project-epam/src/main/resources/static/js",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultPlantUmlFileTemplate&quot;: &quot;UML Object&quot;,
+    &quot;JUnit.All in book.service.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrderServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.book.service [clean,compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.book.service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Downloads/bookstore-service/spring-project-epam/src/main/resources/static/js&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "h2"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;h2&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\Downloads\bookstore-service\spring-project-epam\src\main\resources\static\js" />
@@ -115,7 +166,7 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in book.service">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="All in book.service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="book.service" />
       <option name="PACKAGE_NAME" value="" />
@@ -198,10 +249,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in book.service" />
-        <item itemvalue="JUnit.OrderServiceImplTest" />
-        <item itemvalue="JUnit.ClientServiceImplTest" />
         <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="JUnit.All in book.service" />
+        <item itemvalue="JUnit.ClientServiceImplTest" />
+        <item itemvalue="JUnit.OrderServiceImplTest" />
         <item itemvalue="JUnit.BookServiceImplTest" />
       </list>
     </recent_temporary>
@@ -280,7 +331,13 @@
       <workItem from="1754837060498" duration="310000" />
       <workItem from="1754837387340" duration="5901000" />
       <workItem from="1754843345636" duration="5799000" />
-      <workItem from="1754936089813" duration="2409000" />
+      <workItem from="1754936089813" duration="2707000" />
+      <workItem from="1755022503288" duration="3232000" />
+      <workItem from="1755028089643" duration="10000" />
+      <workItem from="1755054701674" duration="604000" />
+      <workItem from="1755104684079" duration="5207000" />
+      <workItem from="1755199957026" duration="280000" />
+      <workItem from="1755334845837" duration="1139000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -394,7 +451,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754852275011</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: tests for service added">
+      <option name="closed" value="true" />
+      <created>1754938547724</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1754938547724</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,6 +478,7 @@
     <MESSAGE value="fix:  controllers simplified" />
     <MESSAGE value="fix:  controllers simplified 2" />
     <MESSAGE value="feat:  book tests added" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:  book tests added" />
+    <MESSAGE value="feat: tests for service added" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tests for service added" />
   </component>
 </project>

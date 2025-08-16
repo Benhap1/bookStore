@@ -19,6 +19,15 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * The concrete implementation of the {@link ClientService} interface.
+ * <p>
+ * This class handles all business logic related to client account management.
+ * It coordinates interactions with the {@link ClientRepository} and uses the
+ * {@link PasswordEncoder} for security. Access to methods is controlled via
+ * {@code @PreAuthorize} annotations to distinguish between public, client-only,
+ * and admin-only actions.
+ */
 @Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
@@ -27,6 +36,10 @@ public class ClientServiceImpl implements ClientService {
     private final ClientMapper clientMapper;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * {@inheritDoc}
+     * This action is restricted to administrators.
+     */
     @Override
     @Transactional(readOnly = true)
     @PreAuthorize("hasRole('ADMIN')")
@@ -36,11 +49,16 @@ public class ClientServiceImpl implements ClientService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * This implementation ensures the email is unique, encodes the password,
+     * and sets default values (enabled status, client role) for the new user.
+     */
     @Override
     @Transactional
     public ClientDTO addClient(ClientCreateRequestDTO dto) {
-        boolean exists = clientRepository.findByEmail(dto.getEmail()).isPresent();
-        if (exists) {
+        if (clientRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new AlreadyExistException("Client already exists with email: " + dto.getEmail());
         }
 
@@ -53,26 +71,37 @@ public class ClientServiceImpl implements ClientService {
         return clientMapper.toDTO(saved);
     }
 
+    /**
+     * {@inheritDoc}
+     * This sets the client's 'enabled' status to false.
+     */
     @Override
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
     public void blockClient(Long id) {
         Client client = clientRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Client not found with email: " + id));
+                .orElseThrow(() -> new NotFoundException("Client not found with id: ".concat(String.valueOf(id))));
         client.setEnabled(false);
         clientRepository.save(client);
     }
 
+    /**
+     * {@inheritDoc}
+     * This sets the client's 'enabled' status to true.
+     */
     @Override
     @Transactional
     @PreAuthorize("hasRole('ADMIN')")
     public void unblockClient(Long id) {
         Client client = clientRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Client not found with email: " + id));
+                .orElseThrow(() -> new NotFoundException("Client not found with id: ".concat(String.valueOf(id))));
         client.setEnabled(true);
         clientRepository.save(client);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(readOnly = true)
     public ClientDTO getClientByEmail(String email) {
@@ -81,6 +110,12 @@ public class ClientServiceImpl implements ClientService {
                 .orElseThrow(() -> new NotFoundException("Client not found with email: " + email));
     }
 
+    /**
+     * {@inheritDoc}
+     * <p>
+     * This method is secured to ensure that an authenticated client can only top up
+     * their own balance. It also validates that the top-up amount is positive.
+     */
     @Override
     @Transactional
     @PreAuthorize("hasRole('CLIENT') and #clientEmail == authentication.name")
@@ -88,12 +123,17 @@ public class ClientServiceImpl implements ClientService {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Top-up amount must be positive.");
         }
+
         Client client = clientRepository.findByEmail(clientEmail)
                 .orElseThrow(() -> new NotFoundException("Client not found with email: " + clientEmail));
+
         client.setBalance(client.getBalance().add(amount));
         clientRepository.save(client);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional(readOnly = true)
     public List<ClientDTO> searchClientsByEmail(String email) {
